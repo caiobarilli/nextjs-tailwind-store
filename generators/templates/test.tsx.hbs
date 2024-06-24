@@ -1,0 +1,19 @@
+import { render, screen } from '@testing-library/react'
+
+import {{pascalCase name}} from '.'
+
+describe('<{{pascalCase name}} />', () => {
+  it('should render the heading', () => {
+    const { container } = render(<{{pascalCase name}} />)
+
+    expect(screen.getByRole('heading', { name: /{{pascalCase name}}/i })).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should have a classes text-3xl, font-bold and underline', () => {
+    render(<{{pascalCase name}} />)
+    const heading = screen.getByRole('heading', { name: /{{pascalCase name}}/i })
+    expect(heading).toHaveClass('text-3xl font-bold underline')
+  })
+})

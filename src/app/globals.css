@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Scrollbar Styling */
+.cart-sidebar {
+
+    &::-webkit-scrollbar
+    {
+        width: 5px;
+        transform: translate(-10px, 0px);
+    }
+
+    &::-webkit-scrollbar-track
+    {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        background: gray;
+        border-radius: 0;
+    }
+
+    &:hover {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
+
+.product-images {
+    &::-webkit-scrollbar
+    {
+        width: 5px;
+        transform: translate(-10px, 0px);
+    }
+
+    &::-webkit-scrollbar-track
+    {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        background: gray;
+        border-radius: 0;
+    }
+
+    &:hover {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+}
