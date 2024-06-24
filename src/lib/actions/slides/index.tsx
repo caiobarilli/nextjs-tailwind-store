@@ -1,6 +1,6 @@
 'use server'
 
-import { SliderProps } from '@/components/Slider'
+import { SliderProps } from '@/lib/types/slide'
 
 export async function getHomeSlider(): Promise<SliderProps> {
   try {
