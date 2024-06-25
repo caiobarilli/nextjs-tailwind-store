@@ -182,3 +182,27 @@ export async function getProductReviews(
     throw error
   }
 }
+
+export async function getRelatedProducts(
+  id: number
+): Promise<{ products: ProductProps[] | [] }> {
+  try {
+    const products = await fetch(
+      `http://localhost:3000/api/products/related/${id}`,
+      {
+        cache: 'force-cache',
+        next: { tags: ['related_products'] }
+      }
+    )
+
+    if (!products.ok) {
+      throw new Error('Failed to fetch data')
+    }
+
+    const data = await products.json()
+    return data
+  } catch (error) {
+    console.error('Fetch error:', error)
+    throw error
+  }
+}

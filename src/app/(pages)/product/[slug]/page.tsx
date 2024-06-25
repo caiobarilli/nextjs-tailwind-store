@@ -5,7 +5,8 @@ import Product from '@/components/Product'
 import {
   getProductBySlug,
   getProductReviews,
-  getProductDetailsByIds
+  getProductDetailsByIds,
+  getRelatedProducts
 } from '@/lib/actions/products'
 
 export default async function ProductPage({
@@ -24,6 +25,8 @@ export default async function ProductPage({
     product.tag_ids
   )
 
+  const related_products = await getRelatedProducts(product.id)
+
   const related_infos = {
     sku: product.sku,
     description: product.description,
@@ -35,7 +38,11 @@ export default async function ProductPage({
 
   return (
     <Container>
-      <Product product={product} related_infos={related_infos} />
+      <Product
+        product={product}
+        related_infos={related_infos}
+        related_products={related_products}
+      />
     </Container>
   )
 }

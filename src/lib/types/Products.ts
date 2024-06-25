@@ -25,6 +25,7 @@ export interface ProductProps {
 export interface SingleProductProps {
   product: ProductProps
   related_infos: RelatedInfoProductsProps
+  related_products: { products: ProductProps[] | [] }
 }
 
 export interface PagedProductsProps {
@@ -42,6 +43,7 @@ export interface ProductResumeWithColorsProps {
 
 export interface ProductInformationProps {
   related_infos: RelatedInfoProductsProps
+  related_products: { products: ProductProps[] | [] }
 }
 
 export interface PaginationProps {

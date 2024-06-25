@@ -1,12 +1,16 @@
 'use client'
 
-import { ProductInformationProps } from '@/lib/types/products'
 import { useState } from 'react'
+import ProductCard from '@/components/ProductCard'
+import { ProductInformationProps } from '@/lib/types/products'
 
 const ProductInformation: React.FC<ProductInformationProps> = ({
-  related_infos
+  related_infos,
+  related_products
 }) => {
   const [activeTab, setActiveTab] = useState('description')
+
+  const { products } = related_products
 
   const renderContent = () => {
     let content
@@ -96,21 +100,10 @@ const ProductInformation: React.FC<ProductInformationProps> = ({
           RELATED PRODUCTS
         </h2>
 
-        <div className="grid grid-cols-3 gap-4">
-          <div className="border border-gray-300 p-4">
-            <h3 className="text-lg font-semibold">Product 1</h3>
-            <p className="text-sm">Description</p>
-          </div>
-
-          <div className="border border-gray-300 p-4">
-            <h3 className="text-lg font-semibold">Product 2</h3>
-            <p className="text-sm">Description</p>
-          </div>
-
-          <div className="border border-gray-300 p-4">
-            <h3 className="text-lg font-semibold">Product 2</h3>
-            <p className="text-sm">Description</p>
-          </div>
+        <div className="flex flex-wrap justify-center gap-4">
+          {products?.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       </section>
     </div>
