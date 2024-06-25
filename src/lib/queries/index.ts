@@ -7,9 +7,32 @@ export const queries = {
   selectProducts: `SELECT * FROM products LIMIT 10 OFFSET 0;`,
   selectProductsWithPagination: `SELECT * FROM products LIMIT ? OFFSET ?;`,
   selectProductBySlug: `SELECT * FROM products WHERE slug = ?;`,
+  selectProductById: `SELECT * FROM products WHERE id = ?;`,
   countTotalProducts: `SELECT COUNT(*) as total_products FROM products;`,
 
-  // Search Products
+  selectRelatedProducts: `
+    WITH ProductTags AS (
+      SELECT tag_id
+      FROM product_tags
+      WHERE product_id = ?
+    ),
+
+    RelatedProducts AS (
+      SELECT pt.product_id
+      FROM product_tags pt
+      INNER JOIN ProductTags spt ON pt.tag_id = spt.tag_id
+      WHERE pt.product_id != ?
+      GROUP BY pt.product_id
+      HAVING COUNT(pt.tag_id) = (SELECT COUNT(*) FROM ProductTags)
+    )
+
+    SELECT p.*
+    FROM products p
+    WHERE p.id IN (SELECT product_id FROM RelatedProducts)
+    ORDER BY RANDOM()
+    LIMIT 3;
+  `,
+
   searchProducts: `
     SELECT * FROM products
     WHERE name LIKE '%' || ? || '%'
@@ -17,6 +40,7 @@ export const queries = {
     OR additional_info LIKE '%' || ? || '%'
     LIMIT ? OFFSET ?;
   `,
+
   countSearchProduct: `
     SELECT COUNT(*) as total_products
     FROM products

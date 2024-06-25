@@ -56,6 +56,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({
   const updateProductQuantity = (id: number, quantity: number) => {
     const cartItem = cartItems.find((item) => item.id === id)
 
+    if (quantity === 0) {
+      removeFromCart(id)
+      return
+    }
+
     if (cartItem) {
       const updatedItem = {
         ...cartItem,
@@ -73,7 +78,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({
 
   const calculateSubtotal = (products: CartProductProps[]) => {
     return products.reduce((acc, product) => {
-      return acc + product.price
+      const total = acc + product.price * product.quantity
+      return Number(total.toFixed(2))
     }, 0)
   }
 

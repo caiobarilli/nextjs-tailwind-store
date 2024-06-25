@@ -12,12 +12,7 @@ const dummyProducts = [
     color_ids: '1,2',
     tag_ids: '1',
     cover: 'https://images.unsplash.com/photo-1555982105-d25af4182e4e',
-    images: `https://images.unsplash.com/photo-1555982105-d25af4182e4e,
-    https://images.unsplash.com/photo-1555982105-d25af4182e4e,
-    https://images.unsplash.com/photo-1555982105-d25af4182e4e,
-    https://images.unsplash.com/photo-1555982105-d25af4182e4e,
-    https://images.unsplash.com/photo-1555982105-d25af4182e4e,
-    https://images.unsplash.com/photo-1555982105-d25af4182e4e`
+    images: `https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e`
   },
   {
     name: 'Lens Camera',
@@ -34,20 +29,7 @@ const dummyProducts = [
     color_ids: '2,4',
     tag_ids: '2,4,6',
     cover: 'https://images.unsplash.com/photo-1508423134147-addf71308178',
-    images: `https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178,
-    https://images.unsplash.com/photo-1508423134147-addf71308178`
+    images: `https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178`
   },
   {
     name: 'Chair X3',
