@@ -3,12 +3,22 @@
 import { useState } from 'react'
 import Image, { ImageLoaderProps } from 'next/image'
 import { ProductResumeWithColorsProps } from '@/lib/types/products'
+import { useCart } from '@/hooks/use-cart'
 
 const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
   product,
   colors
 }) => {
   const [quantity, setQuantity] = useState(1)
+
+  const {
+    toggleSidebar,
+    addToCart,
+    removeFromCart,
+    updateProductQuantity,
+    isInCart,
+    itemQuantity
+  } = useCart()
 
   const images = product.images.split(',')
   const hasImages = images[0] !== ''
@@ -18,6 +28,28 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
     setQuantity((prevQuantity) =>
       increment ? prevQuantity + 1 : Math.max(1, prevQuantity - 1)
     )
+    if (isInCart(product.id)) {
+      const qts = increment ? quantity + 1 : Math.max(1, quantity)
+      updateProductQuantity(product.id, qts)
+    }
+  }
+
+  const handleAddToCart = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    quantity: number
+  ) => {
+    e.preventDefault()
+    toggleSidebar()
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      slug: product.slug,
+      cover: product.cover,
+      totalQuantity: product.quantity,
+      quantity: quantity
+    })
   }
 
   function coverLoader({ src, width, quality }: ImageLoaderProps) {
@@ -122,7 +154,9 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
               -
             </button>
 
-            <span className="mx-2">{quantity}</span>
+            <span className="mx-2">
+              {!isInCart(product.id) ? 1 : itemQuantity(product.id)}
+            </span>
 
             <button
               onClick={() => handleQuantityChange(true)}
@@ -131,7 +165,26 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
               +
             </button>
           </div>
-          <button className="px-4 py-3 bg-black text-white">Add to cart</button>
+
+          {!isInCart(product.id) ? (
+            <button
+              onClick={(e) => {
+                handleAddToCart(e, quantity)
+              }}
+              className="px-4 py-3 bg-black text-white"
+            >
+              Add to cart
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                removeFromCart(product.id)
+              }}
+              className="px-4 py-3 bg-black text-white"
+            >
+              Remove from cart
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ export interface CartContextProps {
   toggleSidebar: () => void
   isInCart: (id: number) => boolean
   calculateSubtotal: (products: CartProductProps[]) => number
+  itemQuantity: (id: number) => number
   updateProductQuantity: (id: number, quantity: number) => void
 }
 

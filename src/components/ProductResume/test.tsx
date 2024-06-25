@@ -19,6 +19,18 @@ const product = {
   images: 'images'
 }
 
+jest.mock('@/hooks/use-cart', () => ({
+  useCart: () => ({
+    isOpen: false,
+    cartItems: [],
+    addToCart: jest.fn(),
+    removeFromCart: jest.fn(),
+    isInCart: jest.fn().mockReturnValue(false),
+    toggleSidebar: jest.fn(),
+    calculateSubtotal: jest.fn().mockReturnValue(0)
+  })
+}))
+
 describe('<ProductResume />', () => {
   it('should render the component', () => {
     render(<ProductResume product={product} colors={{ id: 1, name: 'Blue' }} />)

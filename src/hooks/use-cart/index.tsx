@@ -38,6 +38,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({
   }
 
   const addToCart = (item: CartProductProps) => {
+    const onCart = isInCart(item.id)
+    if (onCart) {
+      return
+    }
     const newCartItems = [...cartItems, item]
     setCartItems(newCartItems)
     setStorageItem(CART_KEY, newCartItems)
@@ -53,6 +57,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({
     return cartItems.some((item) => item.id === id)
   }
 
+  const itemQuantity = (id: number) => {
+    const item = cartItems.find((item) => item.id === id)
+    return item ? item.quantity : 0
+  }
+
   const updateProductQuantity = (id: number, quantity: number) => {
     const cartItem = cartItems.find((item) => item.id === id)
 
@@ -60,7 +69,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({
       removeFromCart(id)
       return
     }
-
     if (cartItem) {
       const updatedItem = {
         ...cartItem,
@@ -92,6 +100,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({
         addToCart,
         removeFromCart,
         isInCart,
+        itemQuantity,
         updateProductQuantity,
         calculateSubtotal
       }}
