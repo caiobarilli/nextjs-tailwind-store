@@ -1,7 +1,5 @@
 'use client'
 
-import { ProductProps } from '@/lib/types/products'
-
 const APP_KEY = 'NEXT_TAILWIND_STORE'
 
 export function getStorageItem(key: string) {
@@ -10,7 +8,7 @@ export function getStorageItem(key: string) {
   return JSON.parse(data!)
 }
 
-export function setStorageItem(key: string, value: ProductProps[] | number[]) {
+export function setStorageItem(key: string, value: unknown) {
   if (typeof window === 'undefined') return
   const data = JSON.stringify(value)
   return window.localStorage.setItem(`${APP_KEY}_${key}`, data)

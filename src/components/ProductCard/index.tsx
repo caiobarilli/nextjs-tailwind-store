@@ -34,7 +34,16 @@ const ProductCard: React.FC<{
   ) => {
     e.preventDefault()
     toggleSidebar()
-    addToCart(product)
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      slug: product.slug,
+      cover: product.cover,
+      totalQuantity: product.quantity,
+      quantity: 1
+    })
   }
 
   const handleRemoveFromCart = (

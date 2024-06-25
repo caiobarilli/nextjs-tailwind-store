@@ -1,7 +1,7 @@
 'use client'
 
 import { useCart } from '@/hooks/use-cart'
-import Image from 'next/image'
+import Image, { ImageLoaderProps } from 'next/image'
 
 const SidebarCart = () => {
   const {
@@ -14,9 +14,10 @@ const SidebarCart = () => {
 
   const subtotal = calculateSubtotal(cartItems)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function imageLoader(config: any) {
-    return `${config.src}?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=${config.quality}`
+  const handleQuantityChange = () => {}
+
+  function imageLoader({ src, quality }: ImageLoaderProps) {
+    return `${src}?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=${quality}`
   }
 
   return (
@@ -57,8 +58,8 @@ const SidebarCart = () => {
           </div>
         </div>
 
-        <div className="flex overflow-y-auto h-3/4 cart-sidebar mb-4">
-          <ul role="list" className="divide-gray-200 pr-4">
+        <div className="relative overflow-y-auto h-3/4 cart-sidebar mb-4">
+          <ul role="list" className="h-full divide-gray-200 pr-4">
             {cartItems.map((item) => (
               <li key={item.id} className="flex pb-4">
                 <Image
@@ -80,7 +81,21 @@ const SidebarCart = () => {
                     </div>
                   </div>
                   <div className="flex flex-1 items-end justify-between text-sm">
-                    <p className="text-gray-500">qty 1</p>
+                    <p className="text-gray-500">
+                      <button
+                        onClick={() => handleQuantityChange()}
+                        className="w-1 h-1"
+                      >
+                        -
+                      </button>
+                      qty {item.quantity}
+                      <button
+                        onClick={() => handleQuantityChange()}
+                        className="w-8 h-8"
+                      >
+                        +
+                      </button>
+                    </p>
 
                     <div className="flex">
                       <button

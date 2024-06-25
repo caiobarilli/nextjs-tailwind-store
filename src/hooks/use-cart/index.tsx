@@ -1,9 +1,13 @@
 'use client'
 
-import { ProductProps } from '@/lib/types/products'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { getStorageItem, setStorageItem } from '@/lib/localStorage'
-import { CartContextProps, CartProviderProps } from '@/lib/types/cart'
+
+import {
+  CartContextProps,
+  CartProductProps,
+  CartProviderProps
+} from '@/lib/types/cart'
 
 const CART_KEY = 'CartProducts'
 
@@ -14,7 +18,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({
   children
 }: CartProviderProps) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [cartItems, setCartItems] = useState<ProductProps[]>([])
+  const [cartItems, setCartItems] = useState<CartProductProps[]>([])
 
   useEffect(() => {
     const storedCartItems = getStorageItem(CART_KEY)
@@ -33,7 +37,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({
     }
   }
 
-  const addToCart = (item: ProductProps) => {
+  const addToCart = (item: CartProductProps) => {
     const newCartItems = [...cartItems, item]
     setCartItems(newCartItems)
     setStorageItem(CART_KEY, newCartItems)
@@ -49,7 +53,25 @@ export const CartProvider: React.FC<CartProviderProps> = ({
     return cartItems.some((item) => item.id === id)
   }
 
-  const calculateSubtotal = (products: ProductProps[]) => {
+  const updateProductQuantity = (id: number, quantity: number) => {
+    const cartItem = cartItems.find((item) => item.id === id)
+
+    if (cartItem) {
+      const updatedItem = {
+        ...cartItem,
+        quantity
+      }
+
+      const newCartItems = cartItems.map((item) =>
+        item.id === id ? updatedItem : item
+      )
+
+      setCartItems(newCartItems)
+      setStorageItem(CART_KEY, newCartItems)
+    }
+  }
+
+  const calculateSubtotal = (products: CartProductProps[]) => {
     return products.reduce((acc, product) => {
       return acc + product.price
     }, 0)
@@ -64,6 +86,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({
         addToCart,
         removeFromCart,
         isInCart,
+        updateProductQuantity,
         calculateSubtotal
       }}
     >

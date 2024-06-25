@@ -22,13 +22,21 @@ const ProductInformation: React.FC<ProductInformationProps> = ({
         return <p>{related_infos.additional_info}</p>
 
       case 'reviews':
-        if (
-          Array.isArray(related_infos.reviews) &&
-          related_infos.reviews !== undefined
-        ) {
+        if (Array.isArray(related_infos.reviews)) {
           content = related_infos.reviews.map((review) => (
             <li key={review.id}>{review.review}</li>
           ))
+        }
+
+        if (
+          related_infos.reviews !== undefined &&
+          !Array.isArray(related_infos.reviews)
+        ) {
+          content = (
+            <li key={related_infos.reviews.id}>
+              {related_infos.reviews.review}
+            </li>
+          )
         }
 
         return <ul>{content}</ul>

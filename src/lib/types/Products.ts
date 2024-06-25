@@ -44,10 +44,6 @@ export interface ProductInformationProps {
   related_infos: RelatedInfoProductsProps
 }
 
-export interface ProductResumeProps {
-  related_infos: RelatedInfoProductsProps
-}
-
 export interface PaginationProps {
   totalPages: number
   currentPage: number

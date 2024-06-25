@@ -4,7 +4,11 @@
 
 
 /* Scrollbar Styling */
+
 .cart-sidebar {
+
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     &::-webkit-scrollbar
     {
@@ -22,15 +26,13 @@
     {
         background: gray;
         border-radius: 0;
-    }
-
-    &:hover {
-        overflow-y: scroll;
-        overflow-x: hidden;
     }
 }
 
 .product-images {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
     &::-webkit-scrollbar
     {
         width: 5px;
@@ -48,10 +50,4 @@
         background: gray;
         border-radius: 0;
     }
-
-    &:hover {
-        overflow-x: hidden;
-        overflow-y: scroll;
-    }
-
 }
