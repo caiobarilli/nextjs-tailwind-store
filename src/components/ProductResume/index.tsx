@@ -25,12 +25,15 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
   const hasScroll = images.length > 6
 
   const handleQuantityChange = (increment: boolean) => {
-    setQuantity((prevQuantity) =>
-      increment ? prevQuantity + 1 : Math.max(1, prevQuantity - 1)
-    )
     if (isInCart(product.id)) {
-      const qts = increment ? quantity + 1 : Math.max(1, quantity)
-      updateProductQuantity(product.id, qts)
+      const qty = increment ? quantity + 1 : Math.max(1, quantity)
+      const itemQty = itemQuantity(product.id)
+      setQuantity(increment ? itemQty + 1 : Math.max(1, itemQty - 1))
+      updateProductQuantity(product.id, qty)
+    } else {
+      setQuantity((prevQuantity) =>
+        increment ? prevQuantity + 1 : Math.max(1, prevQuantity - 1)
+      )
     }
   }
 
@@ -50,6 +53,11 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
       totalQuantity: product.quantity,
       quantity: quantity
     })
+  }
+
+  const handleRemoveFromCart = (id: number) => {
+    setQuantity(1)
+    removeFromCart(id)
   }
 
   function coverLoader({ src, width, quality }: ImageLoaderProps) {
@@ -155,7 +163,7 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
             </button>
 
             <span className="mx-2">
-              {!isInCart(product.id) ? 1 : itemQuantity(product.id)}
+              {!isInCart(product.id) ? quantity : itemQuantity(product.id)}
             </span>
 
             <button
@@ -178,7 +186,7 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
           ) : (
             <button
               onClick={() => {
-                removeFromCart(product.id)
+                handleRemoveFromCart(product.id)
               }}
               className="px-4 py-3 bg-black text-white"
             >
