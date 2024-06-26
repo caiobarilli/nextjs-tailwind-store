@@ -28,7 +28,7 @@ const SidebarCart = () => {
   }
 
   function imageLoader({ src, quality }: ImageLoaderProps) {
-    return `${src}?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=${quality}`
+    return `https://images.unsplash.com/${src}?ixlib=rb-1.2.1&auto=format&fit=crop&w=60&h=60&q=${quality}`
   }
 
   return (

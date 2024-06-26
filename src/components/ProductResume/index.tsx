@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image, { ImageLoaderProps } from 'next/image'
 import { ProductResumeWithColorsProps } from '@/lib/types/products'
 import { useCart } from '@/hooks/use-cart'
+import Link from 'next/link'
 
 const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
   product,
@@ -61,11 +62,11 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
   }
 
   function coverLoader({ src, width, quality }: ImageLoaderProps) {
-    return `${src}?ixlib=rb-1.2.1&auto=format&fit=crop&w=${width}&h=380&q=${quality}`
+    return `https://images.unsplash.com/${src}?ixlib=rb-1.2.1&auto=format&fit=crop&w=${width}&h=380&q=${quality}`
   }
 
   function imageLoader({ src, width, quality }: ImageLoaderProps) {
-    return `${src}?ixlib=rb-1.2.1&fit=crop&w=${width}&h=58&q=${quality}`
+    return `https://images.unsplash.com/${src}?ixlib=rb-1.2.1&fit=crop&w=${width}&h=58&q=${quality}`
   }
 
   function renderImages() {
@@ -78,19 +79,20 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
             md:overflow-y-auto md:overflow-x-hidden
           `}
         >
-          <div className={` md:h-80 md:mr-1 md:max-h-80`}>
+          <div className={`md:h-80 md:mr-1 md:max-h-80`}>
             {images.map((image, index) => (
-              <Image
-                key={index}
-                alt={product.name}
-                src={image}
-                loader={imageLoader}
-                width={50}
-                height={58}
-                quality={60}
-                className="mb-2 md:mr-2"
-                priority
-              />
+              <Link key={index} href={`/product/image/${image}`}>
+                <Image
+                  alt={product.name}
+                  src={image}
+                  loader={imageLoader}
+                  width={50}
+                  height={58}
+                  quality={60}
+                  className="mb-2 md:mr-2"
+                  priority
+                />
+              </Link>
             ))}
           </div>
         </div>

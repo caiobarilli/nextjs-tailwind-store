@@ -11,8 +11,8 @@ const dummyProducts = [
     reviews_ids: '1,2',
     color_ids: '1,2',
     tag_ids: '1',
-    cover: 'https://images.unsplash.com/photo-1555982105-d25af4182e4e',
-    images: `https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e,https://images.unsplash.com/photo-1555982105-d25af4182e4e`
+    cover: 'photo-1555982105-d25af4182e4e',
+    images: `photo-1555982105-d25af4182e4e,photo-1555982105-d25af4182e4e,photo-1555982105-d25af4182e4e,photo-1555982105-d25af4182e4e,photo-1555982105-d25af4182e4e,photo-1555982105-d25af4182e4e`
   },
   {
     name: 'Lens Camera',
@@ -28,8 +28,8 @@ const dummyProducts = [
     reviews_ids: '3',
     color_ids: '2,4',
     tag_ids: '2,4,6',
-    cover: 'https://images.unsplash.com/photo-1508423134147-addf71308178',
-    images: `https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178,https://images.unsplash.com/photo-1508423134147-addf71308178`
+    cover: 'photo-1508423134147-addf71308178',
+    images: `photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178,photo-1508423134147-addf71308178`
   },
   {
     name: 'Chair X3',
@@ -45,7 +45,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -62,7 +62,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '1',
     tag_ids: '10, 11, 12',
-    cover: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574',
+    cover: 'photo-1544787219-7f47ccb76574',
     images: ''
   },
   {
@@ -79,7 +79,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '2,4,5',
     tag_ids: '13',
-    cover: 'https://images.unsplash.com/photo-1550837368-6594235de85c',
+    cover: 'photo-1550837368-6594235de85c',
     images: ''
   },
   {
@@ -96,8 +96,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3,5',
     tag_ids: '14',
-    cover:
-      'https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg',
+    cover: 'reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg',
     images: ''
   },
   {
@@ -114,7 +113,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '1,5',
     tag_ids: '9',
-    cover: 'https://images.unsplash.com/photo-1551431009-a802eeec77b1',
+    cover: 'photo-1551431009-a802eeec77b1',
     images: ''
   },
   {
@@ -131,7 +130,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '1,2',
     tag_ids: '1',
-    cover: 'https://images.unsplash.com/photo-1555982105-d25af4182e4e',
+    cover: 'photo-1555982105-d25af4182e4e',
     images: ''
   },
   {
@@ -148,7 +147,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '2,4',
     tag_ids: '2,4,6',
-    cover: 'https://images.unsplash.com/photo-1508423134147-addf71308178',
+    cover: 'photo-1508423134147-addf71308178',
     images: ''
   },
   {
@@ -165,7 +164,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -182,7 +181,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -199,7 +198,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -216,7 +215,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -233,7 +232,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -250,7 +249,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -267,7 +266,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -284,7 +283,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -301,7 +300,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   },
   {
@@ -318,7 +317,7 @@ const dummyProducts = [
     reviews_ids: '',
     color_ids: '3',
     tag_ids: '3,5,7',
-    cover: 'https://images.unsplash.com/photo-1449247709967-d4461a6a6103',
+    cover: 'photo-1449247709967-d4461a6a6103',
     images: ''
   }
 ]

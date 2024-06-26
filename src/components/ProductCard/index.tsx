@@ -55,7 +55,7 @@ const ProductCard: React.FC<{
   }
 
   const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
-    return `${src}?ixlib=rb-1.2.1&auto=format&fit=crop&w=${width}&h=${width}&q=${quality || 75}`
+    return `https://images.unsplash.com/${src}?ixlib=rb-1.2.1&auto=format&fit=crop&w=${width}&h=${width}&q=${quality || 75}`
   }
 
   return (
