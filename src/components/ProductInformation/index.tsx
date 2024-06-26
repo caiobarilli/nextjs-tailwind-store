@@ -66,6 +66,7 @@ const ProductInformation: React.FC<ProductInformationProps> = ({
         >
           Additional information
         </button>
+
         {related_infos.reviews !== undefined && (
           <button
             className={`pb-2 ${activeTab === 'reviews' ? 'border-b-2 border-black' : ''}`}

@@ -50,7 +50,8 @@ jest.mock('@/hooks/use-cart', () => ({
     removeFromCart: jest.fn(),
     isInCart: jest.fn().mockReturnValue(false),
     toggleSidebar: jest.fn(),
-    calculateSubtotal: jest.fn().mockReturnValue(0)
+    calculateSubtotal: jest.fn().mockReturnValue(0),
+    itemQuantity: jest.fn().mockReturnValue(0)
   })
 }))
 

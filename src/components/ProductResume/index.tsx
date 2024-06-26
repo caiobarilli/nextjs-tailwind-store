@@ -10,8 +10,6 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
   product,
   colors
 }) => {
-  const [quantity, setQuantity] = useState(1)
-
   const {
     toggleSidebar,
     addToCart,
@@ -25,12 +23,21 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
   const hasImages = images[0] !== ''
   const hasScroll = images.length > 6
 
+  const productCartQuantity = itemQuantity(product.id)
+
+  const [quantity, setQuantity] = useState(
+    productCartQuantity ? productCartQuantity : 1
+  )
+
   const handleQuantityChange = (increment: boolean) => {
-    if (isInCart(product.id)) {
-      const qty = increment ? quantity + 1 : Math.max(1, quantity)
-      const itemQty = itemQuantity(product.id)
+    const itemQty = itemQuantity(product.id)
+
+    if (itemQty !== 0) {
       setQuantity(increment ? itemQty + 1 : Math.max(1, itemQty - 1))
-      updateProductQuantity(product.id, qty)
+      updateProductQuantity(
+        product.id,
+        increment ? itemQty + 1 : Math.max(1, itemQty - 1)
+      )
     } else {
       setQuantity((prevQuantity) =>
         increment ? prevQuantity + 1 : Math.max(1, prevQuantity - 1)
@@ -57,8 +64,8 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
   }
 
   const handleRemoveFromCart = (id: number) => {
-    setQuantity(1)
     removeFromCart(id)
+    setQuantity(1)
   }
 
   function coverLoader({ src, width, quality }: ImageLoaderProps) {
@@ -73,28 +80,22 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
     if (hasImages) {
       return (
         <div
-          className={`
-            ${hasScroll ? 'product-images' : ''}
-            flex flex-row lg:flex-col
-            md:overflow-y-auto md:overflow-x-hidden
-          `}
+          className={`${hasScroll ? 'product-images' : ''} flex flex-row h-80 mr-1 max-h-80 flex-col overflow-y-auto overflow-x-hidden`}
         >
-          <div className={`md:h-80 md:mr-1 md:max-h-80`}>
-            {images.map((image, index) => (
-              <Link key={index} href={`/product/image/${image}`}>
-                <Image
-                  alt={product.name}
-                  src={image}
-                  loader={imageLoader}
-                  width={50}
-                  height={58}
-                  quality={60}
-                  className="mb-2 md:mr-2"
-                  priority
-                />
-              </Link>
-            ))}
-          </div>
+          {images.map((image, index) => (
+            <Link key={index} href={`/product/${product.slug}/image/${image}`}>
+              <Image
+                alt={product.name}
+                src={image}
+                loader={imageLoader}
+                width={50}
+                height={58}
+                quality={60}
+                className="mb-2 md:mr-2"
+                priority
+              />
+            </Link>
+          ))}
         </div>
       )
     }
@@ -106,29 +107,30 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
       <div
         className={`${hasScroll ? 'ml-2' : ''} relative mb-4 lg:mb-0 lg:mr-4 `}
       >
-        <Image
-          alt={product.name}
-          src={product.cover}
-          loader={coverLoader}
-          width={320}
-          height={520}
-          quality={100}
-          className="mb-4"
-          priority
-        />
+        <Link href={`/product/${product.slug}/image/${product.cover}`}>
+          <Image
+            alt={product.name}
+            src={product.cover}
+            loader={coverLoader}
+            width={320}
+            height={520}
+            quality={100}
+            className="mb-4"
+            priority
+          />
+        </Link>
       </div>
     )
   }
 
   return (
-    <div className="flex flex-col lg:flex-row items-start p-4">
-      {hasImages && renderImages()}
-
-      {renderCover()}
-
-      <div className="flex flex-col">
+    <div className="flex flex-col md:flex-row items-start p-4">
+      <div className="flex flex-row">
+        {hasImages && renderImages()}
+        {renderCover()}
+      </div>
+      <div className="flex flex-col ml-2 md:w-4/12">
         <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
-
         <p className="text-gray-700 mb-4">{product.description}</p>
 
         <div className="flex mb-4">
@@ -165,7 +167,7 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
             </button>
 
             <span className="mx-2">
-              {!isInCart(product.id) ? quantity : itemQuantity(product.id)}
+              {productCartQuantity !== 0 ? productCartQuantity : quantity}
             </span>
 
             <button
@@ -181,7 +183,7 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
               onClick={(e) => {
                 handleAddToCart(e, quantity)
               }}
-              className="px-4 py-3 bg-black text-white"
+              className="px-4 py-3 bg-black text-white lg:w-4/12"
             >
               Add to cart
             </button>
@@ -190,7 +192,7 @@ const ProductResume: React.FC<ProductResumeWithColorsProps> = ({
               onClick={() => {
                 handleRemoveFromCart(product.id)
               }}
-              className="px-4 py-3 bg-black text-white"
+              className="px-4 py-3 bg-black text-white lg:w-4/12"
             >
               Remove from cart
             </button>
