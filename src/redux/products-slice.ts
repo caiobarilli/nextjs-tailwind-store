@@ -1,5 +1,5 @@
+import { PagedProductsProps } from '../lib/types/products'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { PagedProductsProps } from '@/lib/types/products'
 
 type ProductsState = {
   queryString: string
