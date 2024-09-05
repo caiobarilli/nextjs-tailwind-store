@@ -16,19 +16,22 @@ module.exports = {
     '^@/lib/(.*)$': '<rootDir>/src/lib/$1'
   },
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', {
-      presets: [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "node": "current"
+    '^.+\\.(js|jsx|ts|tsx)$': [
+      'babel-jest',
+      {
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                node: 'current'
+              }
             }
-          }
-        ],
-        "@babel/preset-react",
-        "@babel/preset-typescript"
-      ]
-    }]
+          ],
+          '@babel/preset-react',
+          '@babel/preset-typescript'
+        ]
+      }
+    ]
   }
 }
